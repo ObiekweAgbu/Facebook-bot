@@ -43,7 +43,7 @@ def webhook():
                     if entity == 'news':
                         response = "Ok I will snd you {} news".format(str(value))
                     elif entity == "location":
-                        response = "You live in {0}. I will send you top headlines from {0}".format(str(value))
+                        response = "You live in {0}? I will send you top headlines from {0}".format(str(value))
 
                     if response == None:
                         response = "Sorry I don't understand that"
