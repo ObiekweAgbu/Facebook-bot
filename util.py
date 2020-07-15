@@ -31,6 +31,7 @@ def webhook():
                 # IDs
                 sender_id = messaging_event['sender']['id']
                 recipient_id = messaging_event['recipient']['id']
+
                 if messaging_event.get('message'):
                     if 'text' in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
@@ -41,7 +42,7 @@ def webhook():
                     entity, value = wit_response(messaging_text)
 
                     if entity == 'news':
-                        response = "Ok I will snd you {} news".format(str(value))
+                        response = "Ok I will send you {} news".format(str(value))
                     elif entity == "location":
                         response = "You live in {0}? I will send you top headlines from {0}".format(str(value))
 
