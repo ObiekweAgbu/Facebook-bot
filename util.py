@@ -39,14 +39,18 @@ def webhook():
                         messaging_text = 'no text'
 
                     response = None
-                    entity, value = wit_response(messaging_text)
+                    entity, value, intent = wit_response(messaging_text)
+                    if intent == 'information':
+                        if entity == 'news':
+                            response = "Ok I will send you {} news".format(str(value))
+                        elif entity == "location":
+                            response = "You live in {0}? I will send you top headlines from {0}".format(str(value))
 
-                    if entity == 'news':
-                        response = "Ok I will send you {} news".format(str(value))
-                    elif entity == "location":
-                        response = "You live in {0}? I will send you top headlines from {0}".format(str(value))
+                    if intent == 'store_info':
+                        if entity == "location":
+                            response = "You live in {0}? I will send you top headlines from {0}".format(str(value))
 
-                    if response == None:
+                    if response is None:
                         response = "Sorry I don't understand that"
                     bot.send_text_message(sender_id, response)
     return "ok", 200
