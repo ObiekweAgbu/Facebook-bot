@@ -46,11 +46,11 @@ def webhook():
                         elif entity == "location":
                             response = "You live in {0}? I will send you top headlines from {0}".format(str(value))
 
-                    if intent == 'store_info':
+                    elif intent == 'store_info':
                         if entity == "location":
                             response = "You live in {0}? I will send you top headlines from {0}".format(str(value))
 
-                    if response is None:
+                    elif response is None:
                         response = "Sorry I don't understand that"
                     bot.send_text_message(sender_id, response)
     return "ok", 200
