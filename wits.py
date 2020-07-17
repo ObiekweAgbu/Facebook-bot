@@ -19,4 +19,4 @@ def wit_response(message_text):
     return (entity, value, intent)
 
 
-print(wit_response("I want sports news"))
+#print(wit_response("I want sports news"))
