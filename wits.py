@@ -16,7 +16,7 @@ def wit_response(message_text):
         intent = list(resp['intents'])[0]['name']
     except:
         pass
-    return entity, value, intent
+    return (entity, value, intent)
 
 
-#print(wit_response("I want sports news"))
+print(wit_response("I want sports news"))
