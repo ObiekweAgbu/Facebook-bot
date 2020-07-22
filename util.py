@@ -50,7 +50,7 @@ def webhook():
 
                     if entity.keys() == 'product:product':
                         response = "Ok I will send you {} news".format(str(entity.get('product:product')))
-                    elif entity.keys() == "dict_keys(['our_services:our_services'])":
+                    elif entity.__contains__('our_services:our_services'):
                         if entity.get('our_services:our_services') == 'what services do you offer?':
                             response = "... We do landscaping, deckings and other garden work, visit {website] " \
                                        "for more info. Would you like to get a quote? "
