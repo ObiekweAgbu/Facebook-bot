@@ -39,19 +39,24 @@ def webhook():
                         messaging_text = 'no text'
 
                     response = None
-                    entity, value, intent = wit_response(messaging_text)
-                    if intent == 'information':
-                        if entity == 'news:news':
-                            response = "Ok I will send you {} news".format(str(value))
-                        elif entity == "location:location":
-                            response = "You live in {0}? I will send you top headlines from {0}".format(str(value))
+                    entity, trait = wit_response(messaging_text)
+                    # boolean variables to show what information has been stored by bot during chat
+                    have_email = False
+                    have_phone_number = False
+                    have_address = False
+                    have_distance = False
+                    have_description = False
 
-                    elif intent == 'store_info':
-                        if entity == "location:location":
-                            response = "You live in {0}? I will send you top headlines from {0}".format(str(value))
-
+                    if entity.keys() == 'product:product':
+                            response = "Ok I will send you {} news".format(str(entity.get('product:product')))
+                    elif entity.keys() == "our_services:our_services":
+                            if entity.get("our_services:our_services") == 'what services do you offer?':
+                                response = "... We do landscaping, deckings and other garden work, visit {website] for more info. Would you like to get a quote?"
+                            else:
+                                response = "Yes we do! Would you like a quote?"
                     elif response is None:
                         response = "Sorry I don't understand that"
+
                     bot.send_text_message(sender_id, response)
     return "ok", 200
 
