@@ -48,16 +48,18 @@ def webhook():
                     have_distance = False
                     have_description = False
 
-                    if entity.__contains__('our_services:our_services'):
-                        if entity.get('our_services:our_services') == 'what services do you offer?':
-                            response = "... We do landscaping, deckings and other garden work, visit {website] " \
-                                       "for more info. Would you like to get a quote? "
-                        else:
-                            response = "Yes we do! Would you like a quote?"
+                    if len(entity) == 1:
 
-                    elif entity.__contains__('get_price:get_price') and entity.__contains__('product:product'):
-                        if entity.get('product:product') == 'a hedge trim' & have_distance == False:
-                            response = "What are the dimensions of the plot in meters?"
+                        if entity.__contains__('our_services:our_services'):
+                            if entity.get('our_services:our_services') == 'what services do you offer?':
+                                response = "... We do landscaping, deckings and other garden work, visit {website] " \
+                                           "for more info. Would you like to get a quote? "
+                            else:
+                                response = "Yes we do! Would you like a quote?"
+                    elif len(entity) == 2:
+                        if entity.__contains__('get_price:get_price') and entity.__contains__('product:product'):
+                            if entity.get('product:product') == 'a hedge trim' & have_distance == False:
+                                response = "What are the dimensions of the plot in meters?"
 
 
 
