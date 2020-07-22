@@ -41,7 +41,7 @@ def wit_response(message_text):
     except:
         pass
 
-    return(entity.get('product:product'), trait)
+    return(entity, trait)
 
 
 print(wit_response("How much would it cost for a hedge trim"))
