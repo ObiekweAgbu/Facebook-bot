@@ -40,7 +40,7 @@ def webhook():
 
                     response = None
                     entity, trait = wit_response(messaging_text)
-                    
+
                     # boolean variables to show what information has been stored by bot during chat
                     have_email = False
                     have_phone_number = False
@@ -50,8 +50,8 @@ def webhook():
 
                     if entity.keys() == 'product:product':
                         response = "Ok I will send you {} news".format(str(entity.get('product:product')))
-                    elif entity.keys() == "our_services:our_services":
-                        if entity.get("our_services:our_services") == 'what services do you offer?':
+                    elif entity.keys() == "dict_keys(['our_services:our_services'])":
+                        if entity.get('our_services:our_services') == 'what services do you offer?':
                             response = "... We do landscaping, deckings and other garden work, visit {website] " \
                                        "for more info. Would you like to get a quote? "
                         else:

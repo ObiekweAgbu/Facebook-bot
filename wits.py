@@ -41,7 +41,7 @@ def wit_response(message_text):
     except:
         pass
 
-    return(entity, trait)
+    return(entity.keys(), trait)
 
 
 print(wit_response("Hello what services do you offer"))
