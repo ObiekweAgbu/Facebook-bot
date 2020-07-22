@@ -41,10 +41,10 @@ def wit_response(message_text):
     except:
         pass
 
-    return(entity, trait)
+    return(entity.get('product:product'), trait)
 
 
-print(wit_response("Hello what services do you offer"))
+print(wit_response("How much would it cost for a hedge trim"))
 
 
 #print(wit_response("I want sports news"))
