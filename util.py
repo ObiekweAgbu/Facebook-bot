@@ -56,12 +56,11 @@ def webhook():
                                            "for more info. Would you like to get a quote? "
                             else:
                                 response = "Yes we do! Would you like a quote?"
+
                     elif len(entity) == 2:
                         if entity.__contains__('get_price:get_price') and entity.__contains__('product:product'):
-                            if entity.get('product:product') == 'a hedge trim' & have_distance == False:
+                            if entity.get('product:product') == 'a hedge trim' and have_distance is False:
                                 response = "What are the dimensions of the plot in meters?"
-
-
 
                     elif response is None:
                         response = "Sorry I don't understand that"
